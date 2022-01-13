@@ -60,5 +60,13 @@ router.post('/:id/posts', validateUserId, validatePost, (req, res) => {
   console.log(req.text)
 });
 
+router.use((err, req, res, next) => {
+  console.log('Yo! something went wrong really bad!')
+  res.status(err.status || 500).json({
+    message: 'This is the super sad path =( something went wrong with your router',
+    error: err.message
+  })
+})
+
 // do not forget to export the router
 module.exports = router;

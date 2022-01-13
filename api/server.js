@@ -18,12 +18,4 @@ server.use('*', (req, res) => {
   })
 })
 
-server.use((err, req, res, next) => {
-  console.log('something is wrong with your HTTP request, Yo!')
-  res.status(err.status || 500).json({
-    message: 'This is the super sad path =(',
-    error: err.message
-  })
-})
-
 module.exports = server;
